@@ -10,10 +10,6 @@ The plan from here is organized into six areas: additional EDA, the K-Means inno
 
 ## 1. Additional EDA
 
-**Train vs test distribution check (KS test and PSI)**
-
-This was on the original EDA roadmap but was never implemented. The risk is that a feature distribution shifts between train and test, causing the model to encounter patterns during inference that it never saw during training. For each numeric feature we compute the Kolmogorov-Smirnov statistic and p-value; for each categorical we compute the Population Stability Index. Any feature flagged as drifting gets reviewed before being included in the final feature set.
-
 **Booking year signal**
 
 We extracted Booking_Month from BookingDate but never looked at the year. The data spans 2023 and 2024. If churn rates differ between years it could reflect a pricing change, a resort policy shift, or simply different booking cohorts behaving differently. We run a quick churn rate comparison between 2023 and 2024 bookings first. If the gap is meaningful, we add Booking_Year as a feature alongside Booking_Month.
